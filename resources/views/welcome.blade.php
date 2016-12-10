@@ -75,15 +75,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    StoryWriter
                 </div>
+                <p>StoryWriter is web application that allows two or more contributors to collaborate</br>
+                    as authors in building a story or poem one sentence or line at a time.</br>
+                    Each author takes a turn in sequence continuing round and round until “The End.”</br></p>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://p4.troubleu.com">Live</a>
+                    <a href="https://github.com/magnet-tn/p4">GitHub</a>
+                    <a href="https://laravel.com/docs">Laravel</a>
                 </div>
             </div>
         </div>
