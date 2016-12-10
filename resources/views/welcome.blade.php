@@ -74,8 +74,9 @@
             @endif
 
             <div class="content">
+
                 <div class="title m-b-md">
-                    StoryWriter
+                    <img src="img/StoryWriterLogo.png" alt="StoryWriter" width="50%"">
                 </div>
                 <p>StoryWriter is web application that allows two or more contributors to collaborate</br>
                     as authors in building a story or poem one sentence or line at a time.</br>
