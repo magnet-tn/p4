@@ -20,7 +20,7 @@ Route::get('/twines/create', 'TwineController@create')->name('twines.create');
 Route::post('/twines', 'TwineController@store')->name('twines.store');
 
 # Show an individual twine
-Route::get('/twines/{title}', 'TwineController@show')->name('twines.show');
+Route::get('/twines/{id}', 'TwineController@show')->name('twines.show');
 
 # Show form to edit a twine
 Route::get('/twines/{id}/edit', 'TwineController@edit')->name('twines.edit');
@@ -41,7 +41,7 @@ Route::get('/help', 'PageController@help')->name('page.help');
 Route::get('/faq', 'PageController@faq')->name('page.faq');
 
 Route::get('/testing', 'TestingController@index')->name('testing.index');
-for($i = 0; $i < 10; $i++) {
+for($i = 0; $i < 20; $i++) {
     Route::get('/testing/'.$i, 'TestingController@example'.$i)->name('testing.example'.$i);
 }
 
@@ -49,7 +49,4 @@ if(App::environment() == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@welcome');

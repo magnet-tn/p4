@@ -9,6 +9,12 @@ class TestingController extends Controller
     /**
     *
     */
+    public function example4() {
+        return view('greeting', ['name' => 'James']);
+    }
+    /**
+    *
+    */
     public function example3() {
         echo \App::environment();
         echo 'App debug:  '.config('app.debug');
