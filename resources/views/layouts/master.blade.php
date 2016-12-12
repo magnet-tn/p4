@@ -51,8 +51,8 @@
                 <div class="links">
                     <a href="/">Home</a>
                     <a href="http://p4.troubleu.com">Live</a>
-                    <a href="https://github.com/magnet-tn/p4">GitHub</a>
-                    <a href="https://laravel.com/docs">Laravel</a>
+                    <a href="https://github.com/magnet-tn/p4" target='_blank'>GitHub</a>
+                    <a href="https://laravel.com/docs" target='_blank'>Laravel</a>
                     <a href="/about">About</a>
                 </div>
             </div>
