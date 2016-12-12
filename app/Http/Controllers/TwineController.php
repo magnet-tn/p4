@@ -23,7 +23,7 @@ class TwineController extends Controller
      */
     public function create()
     {
-        return "a form will go here to create a new twine.";
+        return view('twine.create');
     }
 
     /**
@@ -33,8 +33,17 @@ class TwineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        # Validate the request data
+        $this->validate($request, [
+            'title' => 'required|min:3',
+        ]);
+        #add to the database
+
+        #feedback to user
+        $title = $request->input('title');
+        return 'Process creating a new twine: '.$title;
+        // return 'Process creating a new twine: '.$_POST['title'];
     }
 
     /**

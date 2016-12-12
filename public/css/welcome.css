@@ -47,6 +47,7 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+
 }
 
 .m-b-md {
@@ -76,4 +77,13 @@ footer {
 
 hr {
     width: 35%;
+}
+
+.navlinks > li {
+    display: inline;
+    list-style: none;
+}
+
+img {
+    padding: 15px;
 }

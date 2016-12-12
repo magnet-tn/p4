@@ -26,7 +26,7 @@ Route::get('/twines/{id}', 'TwineController@show')->name('twines.show');
 Route::get('/twines/{id}/edit', 'TwineController@edit')->name('twines.edit');
 
 # Process form to edit a twine
-Route::put('/twines/{id}', 'TwineController@update')->name('twines.update');
+Route::put('/twines', 'TwineController@update')->name('twines.update');
 
 # Get route to confirm deletion of twine
 Route::get('/twines/{id}/delete', 'TwineController@delete')->name('twines.destroy');

@@ -44,10 +44,6 @@
 
             <div class="content">
 
-                <div >
-                    <img src="img/StoryWriterLogo.png" alt="StoryWriter" width="50%">
-                </div>
-
                 <div class="links">
                     <a href="/">Home</a>
                     <a href="http://p4.troubleu.com">Live</a>
@@ -55,6 +51,17 @@
                     <a href="https://laravel.com/docs" target='_blank'>Laravel</a>
                     <a href="/about">About</a>
                 </div>
+
+                <div >
+                    <a href='/'><img src="/img/StoryWriterLogo.png" alt="StoryWriter" width="50%"></a>
+                </div>
+                <nav>
+                    <ul class='navlinks'>
+                        <li><a href='/twines' class="button button-outline">View all twines</a></li>
+                        <li><a href='/twines/create' class="button button-outline">Start a new twine</a></li>
+                    </ul>
+                </nav>
+
             </div>
         </div>
     </header>
