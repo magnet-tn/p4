@@ -2,12 +2,12 @@
 
 @section('title')
     Welcome
-@stop
+@endsection
 
 
 @section('head')
 
-@stop
+@endsection
 
 @section('content')
     <div class="content">
@@ -26,4 +26,4 @@
 
 
     </div>
-@stop
+@endsection

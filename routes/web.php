@@ -49,4 +49,4 @@ if(App::environment() == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
 
-Route::get('/', 'PageController@welcome')->name('page.home');
+Route::get('/', 'PageController@welcome')->name('page.welcome');

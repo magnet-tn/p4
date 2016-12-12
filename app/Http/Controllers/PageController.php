@@ -11,7 +11,7 @@ class PageController extends Controller
         if($request->user()) {
             return redirect('/twines');
         }
-        return view('welcome');
+        return view('page.welcome');
     }
 
     public function help()
