@@ -17,6 +17,10 @@ html, body {
     justify-content: center;
 }
 
+.top {
+    margin: 20px;
+}
+
 .position-ref {
     position: relative;
 }
@@ -47,4 +51,29 @@ html, body {
 
 .m-b-md {
     margin-bottom: 30px;
+}
+
+/* http://mystrd.at/modern-clean-css-sticky-footer */
+html {
+    position:relative;
+    min-height:100%;
+}
+body {
+    margin:0 25px 100px; /* bottom = footer height */
+}
+
+footer {
+    position: absolute;
+    left:0;
+    bottom:0;
+    height:30px;
+    width:100%;
+    background-color:#eee;
+    text-align:center;
+    padding:5px;
+}
+/* End Sticky Footer */
+
+hr {
+    width: 35%;
 }

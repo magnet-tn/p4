@@ -12,9 +12,12 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet'>
 
     <!-- Styles -->
     <link href="/css/welcome.css" type='text/css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css' rel='stylesheet'>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/TroubleU-icon.png">
@@ -30,6 +33,30 @@
         src='img/StoryWriterLogo.png'
         style='width:300px'
         alt='Logo'> -->
+
+        <div class="flex-center position-ref top">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
+                </div>
+            @endif
+
+            <div class="content">
+
+                <div >
+                    <img src="img/StoryWriterLogo.png" alt="StoryWriter" width="50%">
+                </div>
+
+                <div class="links">
+                    <a href="/">Home</a>
+                    <a href="http://p4.troubleu.com">Live</a>
+                    <a href="https://github.com/magnet-tn/p4">GitHub</a>
+                    <a href="https://laravel.com/docs">Laravel</a>
+                    <a href="/about">About</a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <section>
@@ -38,8 +65,13 @@
     </section>
 
     <footer>
-        &copy; {{ date('Y') }}
+        &copy; {{ date('Y') }} StoryWriter &nbsp;&nbsp;
+        <a href='https://github.com/magnet-tn/p4' target='_blank'><i class='fa fa-github'></i> View on Github</a> &nbsp;&nbsp;
+        <a href='http://p4.troubleu.com' target='_blank'><i class='fa fa-link'></i> View Live</a>
     </footer>
+
+    {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
+    @yield('body')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 

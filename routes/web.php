@@ -38,7 +38,7 @@ Route::delete('/twines/{id}', 'TwineController@destroy')->name('twines.destroy')
 * Misc Pages
 */
 Route::get('/help', 'PageController@help')->name('page.help');
-Route::get('/faq', 'PageController@faq')->name('page.faq');
+Route::get('/about', 'PageController@about')->name('page.about');
 
 Route::get('/testing', 'TestingController@index')->name('testing.index');
 for($i = 0; $i < 20; $i++) {
@@ -49,4 +49,4 @@ if(App::environment() == 'local') {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
 
-Route::get('/', 'PageController@welcome');
+Route::get('/', 'PageController@welcome')->name('page.home');
