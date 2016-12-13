@@ -47,12 +47,13 @@
 
     /**
     * ref: https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/21_Schemas_and_Migrations.md#starting-overyour-first-migrations
+    * To allow for a total refresh for development ONLY
     */
     if(App::environment('local')) {
         Route::get('/drop', function() {
-            DB::statement('DROP database foobooks');
-            DB::statement('CREATE database foobooks');
-            return 'Dropped foobooks; created foobooks.';
+            DB::statement('DROP database p4');
+            DB::statement('CREATE database p4');
+            return 'Dropped p4; created p4.';
         });
     };
 
