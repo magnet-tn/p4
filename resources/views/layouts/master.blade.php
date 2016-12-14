@@ -27,6 +27,9 @@
 
 </head>
 <body>
+    @if(Session::get('flash_message') != null)
+        <div class="flash_message">{{ Session::get('flash_message') }}</div>
+    @endif
 
     <header>
         <!-- <img
@@ -53,7 +56,7 @@
                 </div>
 
                 <div >
-                    <a href='/'><img src="/img/StoryWriterLogo.png" alt="StoryWriter" width="50%"></a>
+                    <a href='/'><img src="img/StoryWriterLogo.png" alt="StoryWriter" width="50%"></a.
                 </div>
                 <nav>
                     <ul class='navlinks'>

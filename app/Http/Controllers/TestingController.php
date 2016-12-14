@@ -5,9 +5,148 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon;
+use App\Twine;
+use Illuminate\Support\Str;
+
 
 class TestingController extends Controller
 {
+
+    /**
+    * COLLECTIONS - using object notation, same result as example 13
+    **/
+    public function example14() {
+
+        $twines = Twine::all();
+
+        foreach($twines as $twine) {
+            echo $twine->title."<br>";//treating it as an object
+        }
+        echo '<br/>';
+        foreach($twines as $twine) {
+            echo $twine['title']."<br>";//treating it as an array
+        }
+    }
+    /**
+    * COLLECTIONS - treat it like an array to get at the data
+    **/
+    public function example13() {
+
+        $twines = Twine::all();
+
+        # loop through the Collection and access just the data
+        foreach($twines as $twine) {
+            echo $twine['type']."<br>";
+        }
+    }
+    /**
+    * COLLECTIONS - echo object $twine
+    **/
+    public function example12() {
+
+        $twine = Twine::all(); //$twine is a Collection - containing array of data and methods.
+        dump($twine);
+        echo $twine; //Returns just an array representing the table data, why?
+        //because there is a magic method caled __toString which takes just the data and converts it to JSON
+    }
+    /**
+    * ORM DELETE using the Twine model
+    **/
+    public function example11() {
+        # First get a twine to delete
+        $twine = Twine::where('author', 'LIKE', '%McSnoopy%')->first();
+
+        # If we find a twine, delete it
+        if($twine) {
+
+            $foundTwineId = $twine->id;
+            # simple delete, note it is like save.
+            $twine->delete();
+
+            return "Deletion complete <br/> Twine id#: "
+                .$twine->id.'<br/> gone. <em>'
+                .$twine->title.'</em> is gone';
+
+        }
+        else {
+            return "Can't delete - twine not found.";
+        }
+    }
+    /**
+    * ORM UPDATE using the Twine model
+    **/
+    public function example10() {
+
+        # First get a twine to update
+        $twine = Twine::where('title', 'LIKE', '%Hell%')->first();
+
+        # If we found the twine, update it
+        if($twine) {
+
+            # Give it a different title
+            $twine->title = 'Hell Can Be Dispiriting';
+            # or
+            $twine->title = Str::title('hell CAN Be Dispiriting');
+
+
+            # Save the changes
+            $twine->save();
+
+            echo "Update complete <br/> Twine id#: "
+                .$twine->id.'<br/> is now named: <em>'
+                .$twine->title.'</em>';
+        }
+        else {
+            echo "Twine not found, can't update.";
+        }
+
+    }
+    /**
+    * ORM READ using the Twine model
+    **/
+    public function example9() {
+
+        # Two methods to do this:
+        # Method 1:
+        $twines = Twine::all();
+
+        #Method 2:
+        // $twine = new Twine();
+        // $twines = $twine->all();
+
+        dump($twines);
+        # Make sure we have results before trying to print them...
+        if(!$twines->isEmpty()) {
+
+            # Output the twines
+            foreach($twines as $twine) {
+                echo $twine->title.'<br>';
+            }
+        }
+        else {
+            echo 'No twines found';
+        }
+    }
+
+    /**
+    * ORM CREATE using the Twine model
+    **/
+    public function example8() {
+
+           # Instantiate a new twine Model object
+           $twine = new Twine();
+
+           # Set the parameters to fill fields on twines table
+           $twine->type = 'poem';
+           $twine->title = 'Pencil Fighting';
+           $twine->author = 'Jeeves McSnoopy';
+           $twine->strand = 'It was a dark and stormy night,';
+
+           # Invoke Eloquent save() method: create new row in `twines` table
+            $twine->save();
+
+           echo 'Added: '.$twine->title;
+    }
     /**
     *DB UPDATE example using QueryBuilder
     */
@@ -22,14 +161,14 @@ class TestingController extends Controller
 
         # this makes is the way i found to print the new title.
         $twine = DB::table('twines')->find(2);
-        echo $twine->title.'<br/>';
+        echo $twine->title.'<br/>';//this is object syntax (go into the twine object and field title)
     }
     /**
     *DB CREATE example using QueryBuilder
     */
     public function example6() {
-        # Use the QueryBuilder to insert a new row into the books table
-        # i.e. create a new book
+        # Use the QueryBuilder to insert a new row into the twines table
+        # i.e. create a new twine
         DB::table('twines')->insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),

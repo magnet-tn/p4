@@ -17,7 +17,7 @@ class TwinesTableSeeder extends Seeder
              'type' => 'story',
              'title' => 'The Magic Pumpkin',
              'author' => 'Milly Franklin',
-             'strand' => 'It was the best of fish, it was the worst of fish.',
+             'starter' => 'It was the best of fish, it was the worst of fish.',
          ]);
 
          DB::table('twines')->insert([
@@ -26,7 +26,7 @@ class TwinesTableSeeder extends Seeder
              'type' => 'poem',
              'title' => 'Viscera',
              'author' => 'Jack Crawford',
-             'strand' => 'Celebrate now, ye distracted folk,',
+             'starter' => 'Celebrate now, ye distracted folk,',
          ]);
 
          DB::table('twines')->insert([
@@ -35,7 +35,7 @@ class TwinesTableSeeder extends Seeder
              'type' => 'story',
              'title' => 'Hell is Not Too Late',
              'author' => 'Janice Givers',
-             'strand' => 'Though I was ready to fight dirty, he lay down his own pistol and knife.',
+             'starter' => 'Though I was ready to fight dirty, he lay down his own pistol and knife.',
          ]);
      }
 }

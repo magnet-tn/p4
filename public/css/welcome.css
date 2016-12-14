@@ -75,7 +75,7 @@ footer {
 }
 /* End Sticky Footer */
 
-hr {
+.hr35 {
     width: 35%;
 }
 
@@ -86,4 +86,11 @@ hr {
 
 img {
     padding: 15px;
+}
+
+.flash_message {
+    background-color: #69f;
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
 }

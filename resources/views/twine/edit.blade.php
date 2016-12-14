@@ -1,12 +1,20 @@
 @extends('layouts.master')
 
-@section('title', 'Start a twine')
+@section('title')
+    Add a strand to: {{ $twine->title }}
+@stop
 
 @section ('content')
-    <h2>Start a twine</h2>
-    <form method='POST' action='/twines'>
+
+    <h2>Add a strand to: {{ $twine->title }}</h2>
+
+    <form method='POST' action='/twines/{{ $twine->id }}'>
+
+        {{ method_field('PUT') }}
 
         {{ csrf_field() }}
+
+        <input name='id' value='{{$twine->id}}' type='hidden'>
 
         <div class='form-group'>
             <label>Twine type</label>
@@ -21,7 +29,7 @@
 
         <div class='form-group'>
             <label>Title: </label>
-            <input type='text' id='title' name='title' value='{{ old('title', 'The Tuna Wars') }}'>
+            <input type='text' id='title' name='title' value='{{ old('title', $twine->title) }}'>
             <div class='error'>
                     {{ $errors->first('title') }}
             </div>
@@ -29,14 +37,14 @@
 
         <div class='form-group'>
             <label>Starter: </label>
-            <input type='text' id='starter' name='starter' value='{{ old('Starter', 'It was a blue day. Everything was blue, except the sky.') }}''>
+            <input type='text' id='starter' name='starter' value='{{ old('Starter', $twine->starter) }}''>
             <div class='error'>
                     {{ $errors->first('title') }}
             </div>
         </div>
 
         <div>
-            <input type='submit' value='Start your twine'>
+            <input type='submit' value='Add strand'>
         </div>
     </form>
 @endsection

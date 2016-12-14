@@ -20,8 +20,8 @@ class CreateTwinesTable extends Migration
              $table->string('type');//will become a foreign key
              $table->string('title');
              $table->string('author')->nullable();//will go away with many-many authors rel'shp
+             $table->text('starter');//will become a foreign key
              $table->text('strand');//will go away with many-many strands rel'shp
-
          });
      }
 

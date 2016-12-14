@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon;
+use App\Twine;
+use Session;
 
 class TwineController extends Controller
 {
@@ -13,7 +17,11 @@ class TwineController extends Controller
      */
     public function index()
     {
-        return "hello from the twine controller";
+        $twines = Twine::all();
+
+        return view('twine.index')->with([
+            "twines" => $twines
+        ]);
     }
 
     /**
@@ -33,17 +41,30 @@ class TwineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         # Validate the request data
         $this->validate($request, [
+            'type' => 'required|min:3',
             'title' => 'required|min:3',
+            'starter' => 'required|min:3',
         ]);
+
         #add to the database
+        $title = $request->input('title');
+
+        $twine = new Twine();
+
+        $twine->type = $request->input('type');//$twine->type_id = $request->type_id;
+        $twine->title = $request->input('title');
+        $twine->starter = $request->input('starter');//$twine->starter_id = $request->starter_id;
+        //$twine->author_id = $request->author()->id;
+        $twine->save();
 
         #feedback to user
-        $title = $request->input('title');
+        Session::flash('flash_message', 'You have started a new twine titled: '.$twine->title);
+
+        return redirect('/twines');
         return 'Process creating a new twine: '.$title;
-        // return 'Process creating a new twine: '.$_POST['title'];
     }
 
     /**
@@ -66,7 +87,10 @@ class TwineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $twine = Twine::find($id);
+        return view('twine.edit')->with([
+            'twine' => $twine,
+        ]);
     }
 
     /**
@@ -78,7 +102,12 @@ class TwineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $twine = Twine::find($request->id);
+
+        $twine->title = $request->title;
+        $twine->starter = $request->starter;
+
+        $twine->save();
     }
 
     /**
