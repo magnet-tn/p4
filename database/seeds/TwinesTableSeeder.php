@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Type;
+use App\Starter;
 
 class TwinesTableSeeder extends Seeder
 {
@@ -11,31 +13,40 @@ class TwinesTableSeeder extends Seeder
      */
      public function run()
      {
+        $type_id = Type::where('name','=','story')->pluck('id')->first();
+        $starter_id = Starter::where('starter_text','LIKE','%She stared at the cards%')->pluck('id')->first();
+
          DB::table('twines')->insert([
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-             'type' => 'story',
+             'type_id' => $type_id,
              'title' => 'The Magic Pumpkin',
              'author' => 'Milly Franklin',
-             'starter' => 'It was the best of fish, it was the worst of fish.',
+             'starter_id' => $starter_id,
          ]);
+
+         $type_id = Type::where('name','=','poem')->pluck('id')->first();
+         $starter_id = Starter::where('starter_text','LIKE','%Celebrate now, ye distracted%')->pluck('id')->first();
 
          DB::table('twines')->insert([
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-             'type' => 'poem',
+             'type_id' => $type_id,
              'title' => 'Viscera',
              'author' => 'Jack Crawford',
-             'starter' => 'Celebrate now, ye distracted folk,',
+             'starter_id' => $starter_id,
          ]);
+
+         $type_id = Type::where('name','=','story')->pluck('id')->first();
+         $starter_id = Starter::where('starter_text','LIKE','%Though I was ready to fight dirty%')->pluck('id')->first();
 
          DB::table('twines')->insert([
              'created_at' => Carbon\Carbon::now()->toDateTimeString(),
              'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-             'type' => 'story',
+             'type_id' => $type_id,
              'title' => 'Hell is Not Too Late',
              'author' => 'Janice Givers',
-             'starter' => 'Though I was ready to fight dirty, he lay down his own pistol and knife.',
+             'starter_id' => $starter_id,
          ]);
      }
 }

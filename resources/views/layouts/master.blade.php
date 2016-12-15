@@ -27,8 +27,8 @@
 
 </head>
 <body>
-    @if(Session::get('flash_message') != null)
-        <div class="flash_message">{{ Session::get('flash_message') }}</div>
+    @if(Session::get('flash_message1') != null)
+        <div class="flash_message1">{{ Session::get('flash_message1') }}<span class='flash_message2'>{{ Session::get('flash_message2') }}</span></div>
     @endif
 
     <header>

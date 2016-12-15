@@ -64,7 +64,7 @@ class TwineController extends Controller
         Session::flash('flash_message', 'You have started a new twine titled: '.$twine->title);
 
         return redirect('/twines');
-        return 'Process creating a new twine: '.$title;
+        // return 'Process creating a new twine: '.$title;
     }
 
     /**
@@ -102,12 +102,25 @@ class TwineController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'type' => 'required|min:3',
+            'title' => 'required|min:3',
+            'starter' => 'required|min:3',
+        ]);
+
         $twine = Twine::find($request->id);
 
         $twine->title = $request->title;
         $twine->starter = $request->starter;
 
         $twine->save();
+
+        #feedback to user
+        Session::flash('flash_message1', 'Your changes have been added to: ');
+        Session::flash('flash_message2', $twine->title);
+
+        return redirect('/twines');
+
     }
 
     /**

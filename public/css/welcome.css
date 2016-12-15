@@ -88,9 +88,16 @@ img {
     padding: 15px;
 }
 
-.flash_message {
+.flash_message1 {
     background-color: #69f;
     color: #fff;
     text-align: center;
     font-weight: 400;
+}
+.flash_message2 {
+    background-color: #69f;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
 }
