@@ -1,21 +1,31 @@
 @extends('layouts.master')
 
-@section('title', 'Start a twine')
+@section('title', 'New twine')
 
 @section ('content')
-    <h2>Start a twine</h2>
+    <h2>Start new twine</h2>
     <form method='POST' action='/twines'>
 
         {{ csrf_field() }}
 
-        <div class='form-group'>
+        <!-- <div class='form-group'>
             <label>Twine type</label>
             <select id='type' name='type'>
-                <option value="story">Story</option>
-                <option value="poem" selected>Poem</option>
+                <option value="story" selected>Story</option>
+                <option value="poem">Poem</option>
                 <option value="song">Song</option>
                 <option value="play">Play</option>
                 <option value="joke">Joke</option>
+            </select>
+        </div> -->
+        <div class='form-group'>
+            <label>Type of Twine</label>
+            <select name='type_id'>
+                @foreach($types_for_dropdown as $type_id => $name)
+                    <option
+                    value='{{ $type_id }}'
+                    >{{ $name }}</option>
+                @endforeach
             </select>
         </div>
 
@@ -27,16 +37,26 @@
             </div>
         </div>
 
-        <div class='form-group'>
+        <!-- <div class='form-group'>
             <label>Starter: </label>
-            <input type='text' id='starter' name='starter' value='{{ old('Starter', 'It was a blue day. Everything was blue, except the sky.') }}''>
+            <input type='text' id='starter' name='starter' value='{{ old('Starter', 'It was a blue day. Everything was blue, except the sky.') }}'>
             <div class='error'>
                     {{ $errors->first('title') }}
             </div>
-        </div>
+        </div> -->
+        <div class='form-group'>
+            <label>Starter</label>
+            <select name='starter_id'>
+                @foreach($starters_for_dropdown as $starter_id => $starter_text)
+                    <option
+                    value='{{ $starter_id }}'
+                    >{{ $starter_text }}</option>
+                @endforeach
+            </select>
+        </div>    <br>
 
         <div>
-            <input type='submit' value='Start your twine'>
+            <input type='submit' value='Create new twine'>
         </div>
     </form>
 @endsection

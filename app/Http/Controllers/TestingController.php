@@ -7,10 +7,75 @@ use DB;
 use Carbon;
 use App\Twine;
 use Illuminate\Support\Str;
+use App\Starter;
+use App\Type;
+use App\Helpers\Helper;
+
 
 
 class TestingController extends Controller
 {
+    /**
+    * Associate extant Starter and extant Type with a new Twine
+    **/
+    public function example17() {
+
+        $string = "What do you expect, and when do you want me to do it?";
+        $string = Helper::Titlecase($string);
+        dump($string);
+    }
+    /**
+    * Associate extant Starter and extant Type with a new Twine
+    **/
+    public function example16() {
+
+        #This is the critical example of joins to get associated table info.
+        #This essential says set the foreign key to be the appropriate id of the row in table we're connecting to.
+
+        # To do this, we'll fetch a starter:
+        $starter = Starter::where(
+            'starter_text', '=', "\"No, that was different,\" I told him. \"Back then I didn't know how to pack a suitcase.\"")
+            ->first();
+        dump($starter->toArray());
+
+        # Now we'll fetch a type:
+        $type = Type::where('name','=','story')->first();
+        dump($type->toArray());
+
+        # Then we'll create a new twine and associate it with the starter:
+        $twine = new Twine;
+        $twine->title = "The Glass Box";
+        $twine->author = 'Jill';
+        $twine->starter()->associate($starter); # <--- Associate the starter with this twine
+        $twine->type()->associate($type); # <--- Associate the type with this twine
+        $twine->save();
+        dump($twine->toArray());
+    }
+    /**
+    * Create Starter, Associate new Starter with extant Type with new Twine
+    **/
+    public function example15() {
+
+        # To do this, we'll first create a new starter:
+        $starter = new Starter;
+        $starter->starter_text = "\"No, that was different,\" I told him. \"Back then I didn't know how to pack a suitcase.\"";
+        $starter->contributor = 'Magus Fib';
+        $starter->save();
+        dump($starter->toArray());
+
+        # Now we'll fetch a type:
+        $type = Type::where('name','=','story')->first();
+        dump($type->toArray());
+
+        # Then we'll create a new twine and associate it with the starter:
+        $twine = new Twine;
+        $twine->title = "The Glass Box";
+        $twine->author = 'Jill';
+        $twine->starter()->associate($starter); # <--- Associate the starter with this twine
+        $twine->type()->associate($type); # <--- Associate the type with this twine
+        $twine->save();
+        dump($twine->toArray());
+    }
 
     /**
     * COLLECTIONS - using object notation, same result as example 13
@@ -54,7 +119,7 @@ class TestingController extends Controller
     **/
     public function example11() {
         # First get a twine to delete
-        $twine = Twine::where('author', 'LIKE', '%McSnoopy%')->first();
+        $twine = Twine::where('starter', 'LIKE', '%McSnoopy%')->first();
 
         # If we find a twine, delete it
         if($twine) {
@@ -139,7 +204,7 @@ class TestingController extends Controller
            # Set the parameters to fill fields on twines table
            $twine->type = 'poem';
            $twine->title = 'Pencil Fighting';
-           $twine->author = 'Jeeves McSnoopy';
+           $twine->starter = 'Jeeves McSnoopy';
            $twine->strand = 'It was a dark and stormy night,';
 
            # Invoke Eloquent save() method: create new row in `twines` table
@@ -174,7 +239,7 @@ class TestingController extends Controller
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'type' => 'story',
             'title' => 'Explosive Icing',
-            'author' => 'Mel Kirkoff',
+            'starter' => 'Mel Kirkoff',
             'strand' => 'The wind that came from the explosion was beyond icy. No one had yet documented such a freak reaction from a terrestrial source.',
         ]);
         return 'twine added to twines table';
