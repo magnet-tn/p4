@@ -8,8 +8,6 @@ class ConnectTypesAndTwines extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
      public function up()
      {
@@ -25,6 +23,9 @@ class ConnectTypesAndTwines extends Migration
          });
      }
 
+     /**
+      * Reverse the migrations.
+      */
      public function down()
      {
          Schema::table('twines', function (Blueprint $table) {

@@ -10,11 +10,30 @@ use Illuminate\Support\Str;
 use App\Starter;
 use App\Type;
 use App\Helpers\Helper;
+use Faker\Factory as Faker;
+
 
 
 
 class TestingController extends Controller
 {
+
+    /**
+    * Test Faker
+    **/
+    public function example20() {
+
+        $faker = Faker::create();
+        $title = $faker->catchPhrase;
+        $strand = $faker->paragraph;
+        $created_at = $faker->dateTime($max = 'now');
+        $updated_at = $faker->dateTime($max = 'now');
+        $created_at = (($created_at < $updated_at)) ? $updated_at : $created_at;
+        dump($title);
+        dump($strand);
+        dump($updated_at);
+        dump($created_at);
+    }
 
     /**
     * Query with Eager Loading - reduces excess queries

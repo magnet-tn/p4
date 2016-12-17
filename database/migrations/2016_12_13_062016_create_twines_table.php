@@ -15,9 +15,12 @@ class CreateTwinesTable extends Migration
 
          Schema::create('twines', function (Blueprint $table) {
 
+             #Set the sharing of each twine to default value of true.
+             $shareDefault = true;
+
              $table->increments('id');
              $table->timestamps();
-             #$table->string('type');//will become a foreign key
+             $table->boolean('allow_share')->default($shareDefault);
              $table->string('title');
              $table->string('author')->nullable();//will go away with many-many authors rel'shp
              #$table->text('starter');//will become a foreign key

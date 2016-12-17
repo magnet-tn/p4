@@ -6,6 +6,9 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateStartersTable extends Migration
 {
+    /**
+    * Run the migrations.
+    */
     public function up()
     {
         Schema::create('starters', function (Blueprint $table) {
@@ -15,10 +18,10 @@ class CreateStartersTable extends Migration
             $table->string('contributor');
         });
     }
+    
     /**
     * Reverse the migrations.
     */
-
     public function down()
     {
         Schema::drop('starters');
