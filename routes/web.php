@@ -41,7 +41,7 @@
     Route::get('/about', 'PageController@about')->name('page.about');
 
     Route::get('/testing', 'TestingController@index')->name('testing.index');
-    for($i = 0; $i < 20; $i++) {
+    for($i = 0; $i < 30; $i++) {
         Route::get('/testing/'.$i, 'TestingController@example'.$i)->name('testing.example'.$i);
     }
 

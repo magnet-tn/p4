@@ -15,8 +15,43 @@ use App\Helpers\Helper;
 
 class TestingController extends Controller
 {
+
     /**
-    * Associate extant Starter and extant Type with a new Twine
+    * Query with Eager Loading - reduces excess queries
+    **/
+    public function example19() {
+        # Eager load the starter with the twine
+        $twines = Twine::with('starter')->get();
+
+        foreach($twines as $twine) {
+            echo "the twine: ".$twine->title.'<br> starts with: '.$twine->starter->starter_text.' <br/>';
+        }
+
+        dump($twines->toArray());
+    }
+
+
+    /**
+    * Query with relationship - Note two queries not just one
+    **/
+    public function example18() {
+        # Get the first twine as an example
+        $twine = Twine::first();
+
+        # Get the starter from this twine using the "starter" dynamic property
+        # "starter" corresponds to the the relationship method defined in the Twine model
+        $starter = $twine->starter;//results in another (the second) Query
+        #with () would be the relationship like in example 16
+        #without () [used here] is invoking a dynamic relationship property.
+
+        # Output
+        dump($twine->title.' incudes this starter: '.$starter->starter_text);
+        dump($twine->toArray());
+    }
+
+
+    /**
+    * Test helper function - Titlecase
     **/
     public function example17() {
 
@@ -52,7 +87,10 @@ class TestingController extends Controller
         dump($twine->toArray());
     }
     /**
-    * Create Starter, Associate new Starter with extant Type with new Twine
+    * Create new starter,
+    * Associate new starter with extant type
+    * Create new twine
+    * And Connect new starter and extant type to new Twine
     **/
     public function example15() {
 
