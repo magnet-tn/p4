@@ -1,5 +1,5 @@
 /* list.js */
-$(window).load(function () {
+$(document).ready(function () {
 
 
     var select = document.getElementById('starters_dropdown');

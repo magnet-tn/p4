@@ -17,15 +17,16 @@
         <input name='id' value='{{$twine->id}}' type='hidden'>
 
         <div class='form-group'>
-            <label>Twine type</label>
-            <select id='type' name='type'>
-                <option value="story">Story</option>
-                <option value="poem" selected>Poem</option>
-                <option value="song">Song</option>
-                <option value="play">Play</option>
-                <option value="joke">Joke</option>
+            <label>Type of Twine</label>
+            <select name='type_id'>
+                @foreach($types_for_dropdown as $type_id => $name)
+                <option
+                {{ ($type_id == $twine->type->id) ? 'SELECTED' : '' }}
+                value='{{ $type_id }}'
+                >{{ $name }}</option>
+                @endforeach
             </select>
-        </div>
+        </div>    <br>
 
         <div class='form-group'>
             <label>Title: </label>

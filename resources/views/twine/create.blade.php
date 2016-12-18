@@ -29,7 +29,7 @@
         </div>
 
         <div class='form-group'>
-            <label>Starter</label>
+            <label>Starter</label> &nbsp; &nbsp; <a href="javascript:window.location.href=window.location" id="randomSelect">Select Random Starter (Reset)</a>
             <select id='starters_dropdown' name='starter_id'>
                 @foreach($starters_for_dropdown as $starter_id => $starter_text)
                 <option
