@@ -17,7 +17,7 @@ class ConnectStrandsAndTwines extends Migration
             $table->integer('twine_id')->unsigned();
 
             # The field `twine_id` is a FK that connects to the `id` field in `twines` table
-            $table->foreign('twine_id')->references('id')->on('twines');
+            $table->foreign('twine_id')->references('id')->on('twines');//remove s from 'twines'?
 
         });
     }

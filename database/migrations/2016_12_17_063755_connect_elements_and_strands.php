@@ -17,7 +17,7 @@ class ConnectElementsAndStrands extends Migration
             $table->integer('element_id')->unsigned();
 
             # The field `element_id` is a FK that connects to the `id` field in `elements` table
-            $table->foreign('element_id')->references('id')->on('elements');
+            $table->foreign('element_id')->references('id')->on('elements'); //remove s from 'elements'?
 
         });
     }

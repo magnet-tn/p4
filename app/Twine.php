@@ -19,7 +19,7 @@ class Twine extends Model
         return $this->belongsTo('App\Starter');
     }
 
-    public function strand()
+    public function strands()
     {
         # Twine has many Strands
         # Define a one-to-many relationship.
