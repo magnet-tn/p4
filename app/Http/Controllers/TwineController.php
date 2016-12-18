@@ -35,6 +35,8 @@ class TwineController extends Controller
     public function create()
     {
         # Type
+        # Building an array that is something like:
+        #['type_id' => 'type_name']
         $types_for_dropdown = Type::getForDropdown();
 
         # Starter
@@ -103,8 +105,14 @@ class TwineController extends Controller
      */
     public function edit($id)
     {
+        # Type
+        # Building an array that is something like:
+        #['type_id' => 'type_name']
+        #$types_for_dropdown = Type::getForDropdown();
+
         $twine = Twine::find($id);
         return view('twine.edit')->with([
+            // 'types_for_dropdown' => $types_for_dropdown,
             'twine' => $twine,
         ]);
     }

@@ -17,6 +17,17 @@ use Faker\Factory as Faker;
 
 class TestingController extends Controller
 {
+    public function example22() {
+        # Eager load the starter with the twine
+        $twines = Twine::with('strands')->get();
+
+        foreach($twines as $twine) {
+            echo "the twine: ".$twine->title.'<br> starts with: '.$twine->strand->strand_text.' <br/>';
+        }
+
+        dump($twines->toArray());
+    }
+
     /**
     * Test id finder
     **/
@@ -129,7 +140,7 @@ class TestingController extends Controller
             dump($starter->toArray());
 
             # Now we'll fetch a type:
-            $type = Type::where('name','=','story')->first();
+            $type = Type::where('name','=','song')->first();
             dump($type->toArray());
 
             # Then we'll create a new twine and associate it with the starter:

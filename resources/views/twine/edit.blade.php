@@ -1,13 +1,18 @@
 @extends('layouts.master')
 
 @section('title')
-    Add a strand to: {{ $twine->title }}
+Edit twine: {{ $twine->title }}
 @stop
 
 @section ('content')
-
-    <h2>Add a strand to: {{ $twine->title }}</h2>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>EDIT TWINE </h2>
+            Title <strong>{{ $twine->title }}</strong> / Type:  <strong>{{ $twine->type->name }} </strong>
+        </div>
+    </div>
+    <br/>
     <form method='POST' action='/twines/{{ $twine->id }}'>
 
         {{ method_field('PUT') }}
@@ -17,35 +22,45 @@
         <input name='id' value='{{$twine->id}}' type='hidden'>
 
         <div class='form-group'>
-            <label>Type of Twine</label>
-            <select name='type_id'>
-                @foreach($types_for_dropdown as $type_id => $name)
-                <option
-                {{ ($type_id == $twine->type->id) ? 'SELECTED' : '' }}
-                value='{{ $type_id }}'
-                >{{ $name }}</option>
-                @endforeach
-            </select>
-        </div>    <br>
-
-        <div class='form-group'>
-            <label>Title: </label>
-            <input type='text' id='title' name='title' value='{{ old('title', $twine->title) }}'>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-3">
+                    <label>Title:</label>
+                </div>
+                <div class="col-md-5">
+                    <input type='text' id='title' name='title' value='{{ old('title', $twine->title) }}'>
+                </div>
+            </div>
             <div class='error'>
-                    {{ $errors->first('title') }}
+                {{ $errors->first('title') }}
             </div>
         </div>
 
         <div class='form-group'>
-            <label>Starter: </label>
-            <input type='text' id='starter' name='starter' value='{{ old('Starter', $twine->starter) }}''>
+            <div class="row">
+                <div class="col-md-1 col-md-offset-3">
+            <label>Last Strand: </label>
+        </div>
+                <div class="col-md-5">
+            <input type='text' id='last-strand' name='last-strand' value='{{ old('Starter', $twine->strands) }}'>
+        </div>
             <div class='error'>
-                    {{ $errors->first('title') }}
+                {{ $errors->first('title') }}
             </div>
         </div>
-
-        <div>
-            <input type='submit' value='Add strand'>
-        </div>
+<br/>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-3">
+            <input type='submit' value='Submit Changes'>
+        </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="row">
+            <div class="col-md-2">
+                <INPUT class='button button-outline' TYPE="button" onClick="history.go(0)" VALUE="Cancel">
+            </div>
     </form>
+
+@endsection
+
+@section('body')
+
+
 @endsection
