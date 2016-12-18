@@ -105,16 +105,15 @@ class TwineController extends Controller
      */
     public function edit($id)
     {
-        # Type
-        # Building an array that is something like:
-        #['type_id' => 'type_name']
-        #$types_for_dropdown = Type::getForDropdown();
 
         $twine = Twine::find($id);
-        return view('twine.edit')->with([
-            // 'types_for_dropdown' => $types_for_dropdown,
-            'twine' => $twine,
-        ]);
+        $strand = $twine->strands->last();
+
+        return view('twine.edit')->with(
+            [
+                'twine' => $twine,
+                'strand' => $strand,
+            ]);
     }
 
     /**
@@ -127,12 +126,12 @@ class TwineController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'type' => 'required|min:3',
             'title' => 'required|min:3',
             'starter' => 'required|min:3',
         ]);
 
         $twine = Twine::find($request->id);
+
 
         $twine->title = $request->title;
         $twine->starter = $request->starter;

@@ -74,17 +74,24 @@ class TestingController extends Controller
     **/
     public function example18() {
         # Get the first twine as an example
-        $twine = Twine::first();
+        $twine = Twine::where('id', '=', 2)->first();
 
         # Get the starter from this twine using the "starter" dynamic property
         # "starter" corresponds to the the relationship method defined in the Twine model
         $starter = $twine->starter;//results in another (the second) Query
         #with () would be the relationship like in example 16
         #without () [used here] is invoking a dynamic relationship property.
+        $strands = $twine->strands;
 
         # Output
         dump($twine->title.' incudes this starter: '.$starter->starter_text);
         dump($twine->toArray());
+
+        #$strands = $strands->toArray();
+        dump($strands);
+        foreach ($strands as $key => $value) {
+            dump($value->strand_text);
+        }
     }
 
 

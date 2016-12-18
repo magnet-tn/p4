@@ -9,6 +9,7 @@ Edit twine: {{ $twine->title }}
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2>EDIT TWINE </h2>
+            <hr>
             Title <strong>{{ $twine->title }}</strong> / Type:  <strong>{{ $twine->type->name }} </strong>
         </div>
     </div>
@@ -41,7 +42,12 @@ Edit twine: {{ $twine->title }}
             <label>Last Strand: </label>
         </div>
                 <div class="col-md-5">
-            <input type='text' id='last-strand' name='last-strand' value='{{ old('Starter', $twine->strands) }}'>
+                    @if($strand != null)
+            <input type='text' id='last-strand' name='last-strand' value='{{ old('last_strand', $strand->strand_text) }}'>
+                @else
+                <span class='button button-outline'>You have not yet added a strand to your twine.</span>
+                @endif
+
         </div>
             <div class='error'>
                 {{ $errors->first('title') }}
