@@ -5,8 +5,8 @@
 @section ('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Start new twine</h2>
+        <div class="col-md-8 col-md-offset-2">
+            <h2>START NEW TWINE</h2>
             <form method='POST' action='/twines'>
 
                 {{ csrf_field() }}
@@ -43,6 +43,8 @@
 
                 <div>
                     <input type='submit' value='Create new twine'>
+                    &nbsp;
+                    <INPUT class='button button-outline' TYPE="button" onClick="location.href='/'" VALUE="Cancel">
                 </div>
             </form>
         </div>

@@ -7,13 +7,13 @@
 @section ('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2">
                 <h2>EDIT TWINE </h2>
                 <hr>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-2">
                 Title <strong>{{ $twine->title }}</strong> / Type:  <strong>{{ $twine->type->name }} </strong>
             </div>
             <div class="col-md-2">
@@ -30,28 +30,34 @@
             {{ csrf_field() }}
 
             <input name='id' value='{{$twine->id}}' type='hidden'>
+            @if($strand != null)
             <input name='strand_id' value='{{$strand->id}}' type='hidden'>
-
+            @endif
             <div class='form-group'>
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-3">
+                    <div class="col-md-1 col-md-offset-2">
                         <label>Title:</label>
                     </div>
-                    <div class="col-md-5">
-                        <input type='text' id='title' name='title' value='{{ old('title', $twine->title) }}'>
+                    <div class="col-md-7">
+                        <input
+                            type='text'
+                            id='title'
+                            name='title'
+                            value='{{ old('title', $twine->title) }}'
+                        >
+                        @if($errors->first('title'))
+                            {{ $errors->first('title') }}
+                        @endif
                     </div>
-                </div>
-                <div class='error'>
-                    {{ $errors->first('title') }}
                 </div>
             </div>
 
             <div class='form-group'>
                 <div class="row">
-                    <div class="col-md-1 col-md-offset-3">
+                    <div class="col-md-1 col-md-offset-2">
                         <label>Last Strand: </label>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         @if($strand != null)
                             <input
                             type='text'
@@ -64,16 +70,16 @@
                                 You have not yet added a strand to your twine.
                             </span>
                         @endif
+                        @if($errors->first('strand_text'))
+                            {{ $errors->first('strand_text') }}
+                        @endif
 
-                    </div>
-                    <div class='error'>
-                        {{ $errors->first('title') }}
                     </div>
                 </div>
             </div> <br/>
 
             <div class="row">
-                <div class="col-md-2 col-md-offset-3">
+                <div class="col-md-2 col-md-offset-2">
                     <input
                         type='submit'
                         value='Submit Changes'

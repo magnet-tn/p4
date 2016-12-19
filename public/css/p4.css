@@ -64,12 +64,12 @@ body {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     left:0;
     bottom:0;
     height:30px;
     width:100%;
-    background-color:#eee; 
+    background-color:#eee;
     text-align:center;
     padding:5px;
 }
@@ -87,6 +87,16 @@ footer {
 img {
     padding: 15px;
 }
+
+
+.error {
+    color:red;
+    margin:0;
+    margin-top:5px;
+    padding:0;
+    list-style-type:none;
+}
+
 
 .flash_message1 {
     background-color: #69f;
