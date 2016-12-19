@@ -17,7 +17,8 @@ public function run()
     $users = [
         ['jill@harvard.edu','jill','helloworld'], # <-- Required for P4
         ['jamal@harvard.edu','jamal','helloworld'], # <-- Required for P4
-        ['tsnarro@yahoo.com','thomas','mkmkmk'], # <-- Update with your own info, or remove
+        ['jackie@harvard.edu','jackie','helloworld'], # <-- Required for P4
+        ['tsnarro@yahoo.com','thomas','helloworld'], # <-- Update with your own info, or remove
     ];
 
     # Get existing users to prevent duplicates

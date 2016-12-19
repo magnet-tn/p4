@@ -54,30 +54,9 @@
 </div>
             <div class="content">
 
-                    <div class="links">
-                        <a href="/">Home</a>
-                        <a href="http://p4.troubleu.com">Live</a>
-                        <a href="https://github.com/magnet-tn/p4" target='_blank'>GitHub</a>
-                        <a href="/about">About</a>
-<hr>
-                    </div>
                 <div >
-                    <a href='/'><img src="/img/StoryWriterLogo.png" alt="StoryWriter" width="35%"></a>
+                    <a href='/'><img src="/img/StoryWriterLogo.png" alt="StoryWriter" width="35%"></a.
                 </div>
-
-                <nav>
-                    <ul class='navlinks'>
-                        @if(Auth::check())
-                            <li><a href='/twines' class="button button-outline">View all twines</a></li>
-                            <li><a href='/twines/create' class="button button-outline">Start a new twine</a></li>
-                            <li><a href='/logout' class="button button-outline">Log out</a></li>
-                        @else
-                            <li><a href='/' class="button button-outline">&nbsp;&nbsp;Home&nbsp;&nbsp;</a></li>
-                            <li><a href='/login' class="button button-outline">&nbsp;Log in&nbsp;</a></li>
-                            <li><a href='/register' class="button button-outline">Register</a></li>
-                        @endif
-                    </ul>
-                </nav>
 
             </div>
 

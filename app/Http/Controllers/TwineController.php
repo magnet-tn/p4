@@ -15,13 +15,28 @@ use App\Strand;
 class TwineController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index(Request $request)
     {
-        $twines = Twine::all();
+
+        $user = $request->user();
+
+        # Note: The user is gotten from the request, we can also get it from Auth:
+        //$user = Auth::user();
+
+        if($user) {
+            # Approach 1)
+            //$twines = Twine::where('user_id', '=', $user->id)->orderBy('id','DESC')->get();
+
+            # Approach 2) Take advantage of Model relationships
+            $twines = $user->twines()->get();
+        }
+        else {
+            $twines = [];
+        }
 
         return view('twine.index')->with([
             "twines" => $twines
@@ -29,10 +44,10 @@ class TwineController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
         # Type
@@ -54,11 +69,11 @@ class TwineController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         # Validate the request data
@@ -88,11 +103,11 @@ class TwineController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function show($fish)
     {
         #return "please show me the thing you want:".$id;
@@ -100,11 +115,11 @@ class TwineController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function edit($id)
     {
 
@@ -119,12 +134,12 @@ class TwineController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -135,7 +150,7 @@ class TwineController extends Controller
         $twine = Twine::find($request->id);
         $strand = Strand::find($request->strand_id);
         $twine->title = $request->title;
-                $strand->strand_text = $request->strand_text;
+        $strand->strand_text = $request->strand_text;
         $strand->save();
         $twine->save();
 
@@ -179,7 +194,7 @@ class TwineController extends Controller
 
             $strands = $twine->strands;
             foreach($strands as $strand) {
-               $strand->delete();
+                $strand->delete();
             }
         }
 

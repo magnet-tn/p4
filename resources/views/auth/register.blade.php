@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.mastermini')
+
+@section('title')
+    Register with StoryWriter
+@stop
 
 @section('content')
 <div class="container">

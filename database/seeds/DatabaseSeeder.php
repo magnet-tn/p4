@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TypesTableSeeder::class);
         $this->call(TwinesTableSeeder::class);
         $this->call(StrandsTableSeeder::class);//this was second, now I am putting it last
+        $this->call(TwineUserTableSeeder::class);
     }
 }

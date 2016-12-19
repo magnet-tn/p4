@@ -25,14 +25,37 @@ class TestingController extends Controller
         $user = Auth::user();
 
         if($user)
-            dump($user->toArray());
+        dump($user->toArray());
         else
-            dump('You are not logged in.');
+        dump('You are not logged in.');
 
         return;
     }
+    /**
+    * Retrieving a single twine with its users
+    **/
+    public function example24() {
+        $twines = Twine::with('users')->get();
 
+        foreach($twines as $twine) {
+            dump($twine->title.' is used by: ');
+            foreach($twine->users as $user) {
+                dump($user->name);
+            }
+        }
+    }
+    /**
+    * Retrieving a single twine with its users
+    **/
+    public function example23() {
+        $twine = Twine::where('title', '=', 'The Magic Pumpkin')->first();
 
+        dump($twine->title);
+
+        foreach($twine->users as $user) {
+            dump($user->name);
+        }
+    }
     /**
     * Eager Load with strands table ref
     **/

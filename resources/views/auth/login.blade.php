@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.mastermini')
+
+@section('title')
+    Login to StoryWriter
+@stop
 
 @section('content')
 <div class="container">
@@ -49,8 +53,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="links col-md-8 col-md-offset-4">
+                                <button type="submit" class="button button">
                                     Login
                                 </button>
 
