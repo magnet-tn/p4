@@ -1,27 +1,55 @@
-# Laravel PHP Framework
+# Project 4 - StoryWriter Project for CSCI-E15 (DWA)
 
+![TroubleU Logo](StoryWriterLogo.png)
+
+## Live URL
+StoryWriter <http://p4.troubleU.com>
+
+
+## Description
+This repository contains the code for an app called _StoryWriter_. StoryWriter is a dynamic web application that allows two or more contributors to collaborate as authors in building a story, poem, song or play, one line at a time.
+Each author takes a turn in sequence continuing round and round until “The End.”
+
+#### MVP
+Authors can register, and build stories (called _twines_), but selecting from a small database of starter lines (_starters_). They can edit the twines (title, twine type, and last entered line). The lines that are in each twine are provided only by seeders in the MVP. So today, users can see all of their twines, create new twines, update  and delete twines. There is User integration so that users can only see their twines, and guests are limited to information about the site and registration.
+
+#### Next Generation
+The product ultimately is about writing a a story with friends and other authors (users). There will be the functionality to add _strands_, which are the individual lines that users will contribute. The strands will have a elements at the beginning of each strand to indicate if the new strand is a new paragragh, stanza, chapter, etc. The elements and strands will be "compiled" to view the document in the intended form.
+
+I hope you enjoy the application.
+
+## Demo
+<http://www.screencast.com/t/whCZoVrhv>
+
+
+## Details for teaching team
+No login required.
+
+
+## Outside code
+There are several contributions from other sources to make StoryWriter work:
+
+#### Log Viewer
+* <https://github.com/rap2hpoutre/laravel-log-viewer>
+* Simple log reporting GUI.
+
+#### Milligram CSS Framework
+* <https://milligram.github.io>
+* This framework provides minimalist CSS styling via CDN
+
+#### Susan Buck's Foobooks.css from Foobooks class example
+* <https://github.com/susanBuck/foobooks/blob/master/public/css/foobooks.css>
+* In the interest of time and focus on the key elements, this project relies on css Milligram CSS Framework (noted above) with layout help from foobooks.css
+
+![Storywriter Database](p4_db_tables.png)
+
+
+#### Laravel Version Info
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
+#### License
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
