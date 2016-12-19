@@ -10,6 +10,7 @@ use App\Type;
 use App\Starter;
 use Session;
 use App\Helpers\Helper;
+use App\Strand;
 
 class TwineController extends Controller
 {
@@ -79,7 +80,8 @@ class TwineController extends Controller
         $twine->save();
 
         #feedback to user
-        Session::flash('flash_message', 'You have started a new twine titled: '.$twine->title);
+        Session::flash('flash_message1', 'You have started a new twine titled: ');
+        Session::flash('flash_message2', $twine->title);
 
         return redirect('/twines');
         // return 'Process creating a new twine: '.$title;
@@ -126,16 +128,15 @@ class TwineController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|min:3',
-            'starter' => 'required|min:3',
+            'title' => 'required|min:3|max:100',
+            'strand_text' => 'required|min:3|max:660',
         ]);
 
         $twine = Twine::find($request->id);
-
-
+        $strand = Strand::find($request->strand_id);
         $twine->title = $request->title;
-        $twine->starter = $request->starter;
-
+                $strand->strand_text = $request->strand_text;
+        $strand->save();
         $twine->save();
 
         #feedback to user

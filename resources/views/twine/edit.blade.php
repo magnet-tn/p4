@@ -30,6 +30,7 @@
             {{ csrf_field() }}
 
             <input name='id' value='{{$twine->id}}' type='hidden'>
+            <input name='strand_id' value='{{$strand->id}}' type='hidden'>
 
             <div class='form-group'>
                 <div class="row">
@@ -52,9 +53,16 @@
                     </div>
                     <div class="col-md-5">
                         @if($strand != null)
-                        <input type='text' id='last-strand' name='last-strand' value='{{ old('last_strand', $strand->strand_text) }}'>
+                            <input
+                            type='text'
+                            id='strand_text'
+                            name='strand_text'
+                            value='{{ old('last_strand', $strand->strand_text) }}'
+                            >
                         @else
-                        <span class='button button-outline'>You have not yet added a strand to your twine.</span>
+                            <span class='button button-outline'>
+                                You have not yet added a strand to your twine.
+                            </span>
                         @endif
 
                     </div>
@@ -66,11 +74,20 @@
 
             <div class="row">
                 <div class="col-md-2 col-md-offset-3">
-                    <input type='submit' value='Submit Changes'>
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input
+                        type='submit'
+                        value='Submit Changes'
+                    >
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="row">
                     <div class="col-md-2">
-                        <INPUT class='button button-outline' TYPE="button" onClick="history.go(0)" VALUE="Cancel">
+                        <input
+                            class='button button-outline'
+                            type="button"
+                            onClick="history.go(0)"
+                            VALUE="Cancel"
+                        >
                     </div>
                 </div>
             </div>

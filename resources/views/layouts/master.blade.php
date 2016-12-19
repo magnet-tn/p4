@@ -15,7 +15,7 @@
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet'>
 
     <!-- Styles -->
-    <link href="/css/welcome.css" type='text/css' rel='stylesheet'>
+    <link href="/css/p4.css" type='text/css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.css' rel='stylesheet'>
     <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css' rel='stylesheet'>
 
@@ -28,7 +28,9 @@
 </head>
 <body>
     @if(Session::get('flash_message1') != null)
-        <div class="flash_message1">{{ Session::get('flash_message1') }}<span class='flash_message2'>{{ Session::get('flash_message2') }}</span></div>
+        <div class="flash_message1">
+            {{ Session::get('flash_message1') }}<span class='flash_message2'>{{ Session::get('flash_message2') }}</span>
+        </div>
     @endif
 
     <header>
@@ -67,12 +69,16 @@
                 </nav>
 
             </div>
-        </div>
+
     </header>
 
     <section>
-        {{-- Main page content will be yielded here --}}
-        @yield('content')
+        <hr>
+        <div class="container-fluid">
+            {{-- Main page content will be yielded here --}}
+            @yield('content')
+
+        </div>
     </section>
 
     <footer>
@@ -85,6 +91,6 @@
     @yield('body')
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
+
 </body>
 </html>

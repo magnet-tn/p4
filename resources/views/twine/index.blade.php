@@ -4,7 +4,7 @@
 
 @section ('content')
     <div class="content">
-        <hr/>
+
         @if(count($twines) > 0)
             @foreach($twines as $twine)
             <a href='/twines/{{ $twine->id }}/edit'> {{ $twine -> title }}  <i class='fa fa-pencil'></i></a>
