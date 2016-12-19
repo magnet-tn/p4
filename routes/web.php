@@ -14,7 +14,7 @@
     Route::get('/twines', 'TwineController@index')->name('twines.index');
 
     # Show a form to create a new twine
-    Route::get('/twines/create', 'TwineController@create')->name('twines.create');
+    Route::get('/twines/create', 'TwineController@create')->name('twines.create')->middleware('auth');
 
     # Process the form to create a new twine
     Route::post('/twines', 'TwineController@store')->name('twines.store');
@@ -44,6 +44,8 @@
     for($i = 0; $i < 30; $i++) {
         Route::get('/testing/'.$i, 'TestingController@example'.$i)->name('testing.example'.$i);
     }
+
+    Route::get('/status', 'TestingController@loginStatus')->name('loginStatus');
 
     /**
     * ref: https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/21_Schemas_and_Migrations.md#starting-overyour-first-migrations
@@ -103,3 +105,9 @@
     });
 
     Route::get('/', 'PageController@welcome')->name('page.welcome');
+
+Auth::routes();
+
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::get('/home', 'HomeController@index');

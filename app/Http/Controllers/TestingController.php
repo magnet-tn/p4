@@ -11,12 +11,31 @@ use App\Starter;
 use App\Type;
 use App\Helpers\Helper;
 use Faker\Factory as Faker;
+use Auth;
 
 
 
 
 class TestingController extends Controller
 {
+
+    public function loginStatus() {
+
+        # You may access the authenticated user via the Auth facade
+        $user = Auth::user();
+
+        if($user)
+            dump($user->toArray());
+        else
+            dump('You are not logged in.');
+
+        return;
+    }
+
+
+    /**
+    * Eager Load with strands table ref
+    **/
     public function example22() {
         # Eager load the starter with the twine
         $twines = Twine::with('strands')->get();
