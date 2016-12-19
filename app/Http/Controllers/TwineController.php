@@ -147,13 +147,56 @@ class TwineController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * GET
+    * Page to confirm twine deletion
+    */
+    public function delete($id) {
+
+        $twine = Twine::find($id);
+
+        return view('twine.delete')->with('twine', $twine);
+    }
+
+
+
+    /**
+    * POST - No actual page, just process the delete request
+    */
     public function destroy($id)
     {
-        //
+        # Get the twine to be deleted
+        $twine = Twine::find($id);
+
+        if(is_null($twine)) {
+            Session::flash('message','twine not found.');
+            return redirect('/twines');
+        }
+
+
+        # Remove any strands associated with this twine
+        if($twine->strands()) {
+
+            $strands = $twine->strands;
+            foreach($strands as $strand) {
+               $strand->delete();
+            }
+        }
+
+        # Remove any items in a pivot-table associated with this twine
+        # This is code that is needed when the tags table is incorporated.
+        // if($twine->tags()) {
+        //     $twine->tags()->detach();
+        // }
+
+        # Delete the twine
+        $twine->delete();
+
+        # Finish
+        Session::flash('flash_message', $twine->title.' was deleted.');
+        return redirect('/twines');
     }
+
+
+
+
 }

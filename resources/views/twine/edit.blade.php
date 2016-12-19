@@ -10,7 +10,16 @@ Edit twine: {{ $twine->title }}
         <div class="col-md-6 col-md-offset-3">
             <h2>EDIT TWINE </h2>
             <hr>
+        </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-3">
             Title <strong>{{ $twine->title }}</strong> / Type:  <strong>{{ $twine->type->name }} </strong>
+        </div>
+        <div class="col-md-2">
+            <span class="pull-right">
+         Delete this twine<a href='/twines/{{ $twine->id }}/delete'>  <i class='fa fa-trash'></i></a>
+     </span>
         </div>
     </div>
     <br/>
@@ -62,6 +71,7 @@ Edit twine: {{ $twine->title }}
             <div class="col-md-2">
                 <INPUT class='button button-outline' TYPE="button" onClick="history.go(0)" VALUE="Cancel">
             </div>
+        </div>
     </form>
 
 @endsection
