@@ -115,3 +115,11 @@ img {
 .info {
     font-size:smaller;
 }
+
+.weaker {
+    font-weight: lighter;
+}
+
+.stronger {
+    font-weight: bolder;
+}

@@ -10,7 +10,7 @@
             <form method='POST' action='/twines'>
 
                 {{ csrf_field() }}
-
+                <input name='user_id' value='{{Auth::user()->id}}' type='hidden'>
                 <div class='form-group'>
                     <label>Type of Twine</label>
                     <select name='type_id'>

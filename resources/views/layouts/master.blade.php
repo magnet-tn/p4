@@ -59,6 +59,7 @@
                         <a href="http://p4.troubleu.com">Live</a>
                         <a href="https://github.com/magnet-tn/p4" target='_blank'>GitHub</a>
                         <a href="/about">About</a>
+                        <a href="/twineology">Twine-ology</a>
 <hr>
                     </div>
                 <div >
@@ -70,7 +71,6 @@
                         @if(Auth::check())
                             <li><a href='/twines' class="button button-outline">View all twines</a></li>
                             <li><a href='/twines/create' class="button button-outline">Start a new twine</a></li>
-                            <li><a href='/logout' class="button button-outline">Log out</a></li>
                         @else
                             <li><a href='/' class="button button-outline">&nbsp;&nbsp;Home&nbsp;&nbsp;</a></li>
                             <li><a href='/login' class="button button-outline">&nbsp;Log in&nbsp;</a></li>

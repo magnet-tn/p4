@@ -11,6 +11,9 @@ use App\Starter;
 use Session;
 use App\Helpers\Helper;
 use App\Strand;
+use Auth;
+use App\User;
+use App\Users;
 
 class TwineController extends Controller
 {
@@ -39,7 +42,8 @@ class TwineController extends Controller
         }
 
         return view('twine.index')->with([
-            "twines" => $twines
+            "twines" => $twines,
+            "user" =>$user,
         ]);
     }
 
@@ -53,6 +57,7 @@ class TwineController extends Controller
         # Type
         # Building an array that is something like:
         #['type_id' => 'type_name']
+        $user = Auth::user();
         $types_for_dropdown = Type::getForDropdown();
 
         # Starter
@@ -80,19 +85,21 @@ class TwineController extends Controller
         $this->validate($request, [
             'title' => 'required|min:4',
         ]);
-
+        $users = Auth::user();
 
         #add to the database
         $title = $request->input('title');
         $title = Helper::Titlecase($title);
 
         $twine = new Twine();
-
         $twine->type_id = $request->type_id;
         $twine->title = $title;
         $twine->starter_id = $request->starter_id;
-        //$twine->author_id = $request->author()->id;
+
         $twine->save();
+
+        $users = array($request->user()->id);
+        $twine->users()->sync($users);
 
         #feedback to user
         Session::flash('flash_message1', 'You have started a new twine titled: ');
@@ -147,9 +154,11 @@ class TwineController extends Controller
             'strand_text' => 'required|min:3|max:660',
         ]);
 
+        $title = $request->title;
+        $title = Helper::Titlecase($title);
         $twine = Twine::find($request->id);
         $strand = Strand::find($request->strand_id);
-        $twine->title = $request->title;
+        $twine->title = $title;
         $strand->strand_text = $request->strand_text;
         $strand->save();
         $twine->save();
@@ -203,6 +212,12 @@ class TwineController extends Controller
         // if($twine->tags()) {
         //     $twine->tags()->detach();
         // }
+
+        # Remove any items in a pivot-table associated with this twine
+        # This is code that is also needed when the tags table is incorporated.
+        if($twine->users()) {
+            $twine->users()->detach();
+        }
 
         # Delete the twine
         $twine->delete();

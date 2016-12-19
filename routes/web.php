@@ -37,13 +37,13 @@
     /**
     * Misc Pages
     */
-    Route::get('/help', 'PageController@help')->name('page.help');
+    Route::get('/twineology', 'PageController@twineology')->name('page.twineology');
     Route::get('/about', 'PageController@about')->name('page.about');
 
     Route::get('/testing', 'TestingController@index')->name('testing.index');
-    for($i = 0; $i < 30; $i++) {
-        Route::get('/testing/'.$i, 'TestingController@example'.$i)->name('testing.example'.$i);
-    }
+    // for($i = 0; $i < 30; $i++) {
+    //     Route::get('/testing/'.$i, 'TestingController@example'.$i)->name('testing.example'.$i);
+    // }
 
     Route::get('/status', 'TestingController@loginStatus')->name('loginStatus');
 

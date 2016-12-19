@@ -14,13 +14,14 @@ class PageController extends Controller
         return view('page.welcome');
     }
 
-    public function help()
+    public function twineology()
     {
-        return 'This is the help or support page';//
+        return view('page.twineology');;//
     }
 
     public function about()
     {
         return view('page.about');//
     }
+
 }
