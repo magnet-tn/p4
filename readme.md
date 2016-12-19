@@ -14,12 +14,12 @@ Each author takes a turn in sequence continuing round and round until “The End
 Authors can register, and build stories (called _twines_), but selecting from a small database of starter lines (_starters_). They can edit the twines (title, twine type, and last entered line). The lines that are in each twine are provided only by seeders in the MVP. So today, users can see all of their twines, create new twines, update  and delete twines. There is User integration so that users can only see their twines, and guests are limited to information about the site and registration.
 
 #### Next Generation
-The product ultimately is about writing a a story with friends and other authors (users). There will be the functionality to add _strands_, which are the individual lines that users will contribute. The strands will have a elements at the beginning of each strand to indicate if the new strand is a new paragragh, stanza, chapter, etc. The elements and strands will be "compiled" to view the document in the intended form.
+The product ultimately is about writing a a story with friends and other authors (users). There will be the functionality to add _strands_, which are the individual lines that users will contribute. The strands will have a elements at the beginning of each strand to indicate if the new strand has a break for a paragraph, stanza, chapter, etc. The elements and strands will be "compiled" to view the document in the intended form.
 
 I hope you enjoy the application.
 
 ## Demo
-<http://www.screencast.com/t/whCZoVrhv>
+<http://www.screencast.com/t/QywByyKStg>
 
 
 ## Details for teaching team
